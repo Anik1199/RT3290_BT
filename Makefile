@@ -27,9 +27,9 @@ clean:
 	$(MAKE) -C $(LINUX_SRC) M=$(PWD) clean
 
 install:
-	#$(MAKE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_DIR=$(MDIR) \
-	#	-C $(LINUX_SRC) M=$(PWD) modules_install
-	#depmod -a
+	$(MAKE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_DIR=$(MDIR) \
+		-C $(LINUX_SRC) M=$(PWD) modules_install
+	depmod -a
 	## uncomment the three lines above if you wanna use `make install` instead of dkms
 	install -m 0755 -o root -g root tools/49rtbt $(DESTDIR)/usr/lib/pm-utils/sleep.d/
 	install -m 0755 -o root -g root tools/rtbt $(DESTDIR)/usr/bin/
